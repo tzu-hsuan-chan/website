@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tzu-Hsuan Chan | Master's Student/Researcher</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 引入 Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            gray: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            blue: '#0066cc',
+                            blueHover: '#0077ed'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局平滑滾動 */
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #ffffff;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Apple 風格的流暢按鈕過渡效果 */
+        .btn-fluid {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow, background-color;
+        }
+        .btn-fluid:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+        .btn-fluid:active {
+            transform: scale(0.97);
+            transition: all 0.1s ease;
+        }
+
+        /* 毛玻璃導覽列效果 */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        /* 滾動進入視野的動畫基礎設定 */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 text-xs font-medium text-gray-800 tracking-wide">
+                <a href="#" class="hover:text-apple-blue transition-colors duration-300 font-semibold">Tzu-Hsuan Chan</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="hover:text-apple-blue transition-colors duration-300">About</a>
+                    <a href="#research" class="hover:text-apple-blue transition-colors duration-300">Research</a>
+                    <a href="#publications" class="hover:text-apple-blue transition-colors duration-300">Publications</a>
+                    <a href="#teaching" class="hover:text-apple-blue transition-colors duration-300">Teaching</a>
+                </div>
+                <a href="#contact" class="hover:text-apple-blue transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4 sm:px-6 lg:px-8 text-center bg-apple-gray">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-sm md:text-base font-semibold text-gray-500 uppercase tracking-widest mb-4 animate-on-scroll">Master's Student / Researcher</h2>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-apple-dark mb-6 animate-on-scroll delay-100">
+                Tzu-Hsuan Chan (詹子軒)
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-500 font-light max-w-3xl mx-auto mb-10 animate-on-scroll delay-200 leading-relaxed">
+                我對探究 Mathematical Biology, Bifurcation Theory, Nonautonomous Systems 中的數學問題充滿熱忱。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 animate-on-scroll delay-300">
+                <a href="#research" class="btn-fluid bg-apple-dark text-white px-8 py-3.5 rounded-full font-medium text-sm md:text-base inline-block">
+                    探索研究 (Research)
+                </a>
+                <a href="https://harryrichman.github.io/CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-fluid bg-white text-apple-dark border border-gray-200 px-8 py-3.5 rounded-full font-medium text-sm md:text-base inline-block">
+                    檢視履歷 (View CV)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 bg-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">背景簡介</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <!-- 簡潔的頭像替代區塊 -->
+                    <div class="w-full aspect-[4/3] bg-apple-gray rounded-3xl overflow-hidden flex items-center justify-center border border-gray-100">
+                        <img src="img/selfie.jpg" alt="Tzu-Hsuan Chan" class="object-cover w-full h-full">
+                    </div>
+                </div>
+                <div class="space-y-6 text-lg text-gray-600 font-light animate-on-scroll delay-100">
+                    <p>
+                        目前我是國家理論科學研究中心（<strong class="text-apple-dark font-medium">NCTS</strong>）的博士後研究員，由 Liang-Chung Hsia（夏良忠）教授擔任指導。
+                    </p>
+                    <p>
+                        在此之前，我曾在 Fred Hutch 癌症中心的 Matsen Group（Herbold Computational Biology Program）以及華盛頓大學（<strong class="text-apple-dark font-medium">University of Washington</strong>）擔任博士後，受 Farbod Shokrieh 指導。
+                    </p>
+                    <p>
+                        我在密西根大學（<strong class="text-apple-dark font-medium">University of Michigan</strong>）取得數學博士學位，指導教授為 David Speyer 與 Jeff Lagarias。在研究所之前，我於 <strong class="text-apple-dark font-medium">MIT</strong> 以及 Math in Moscow 計畫學習數學。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests Section -->
+    <section id="research" class="py-24 md:py-32 bg-apple-gray px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">研究領域 (Research Interests)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-3xl btn-fluid cursor-default animate-on-scroll">
+                    <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="ph ph-shapes text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tropical Geometry</h3>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        探討 Tropical curves 上的 Weierstrass points 與 torsion points 的分佈，並研究其幾何特徵與拓樸性質的關聯。
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-3xl btn-fluid cursor-default animate-on-scroll delay-100">
+                    <div class="w-14 h-14 bg-green-50 text-green-600 rounded-full flex items-center justify-center mb-6">
+                        <i class="ph ph-tree-structure text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Phylogenetics</h3>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        應用代數與幾何方法於生物演化樹（Phylogenetic trees）。近期研究包含利用 Deep Learning 與 Vector encoding 技術來探索樹狀結構空間。
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-3xl btn-fluid cursor-default animate-on-scroll delay-200">
+                    <div class="w-14 h-14 bg-blue-50 text-apple-blue rounded-full flex items-center justify-center mb-6">
+                        <i class="ph ph-math-operations text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Combinatorics & Number Theory</h3>
+                    <p class="text-gray-500 font-light text-sm leading-relaxed">
+                        研究包含 Floor quotient partial orders、<i>p</i>-adic incomplete gamma function，以及圖論中的有效電阻（Effective resistance）與隨機切割。
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-24 md:py-32 bg-white px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-on-scroll">精選發表 (Selected Publications)</h2>
+            
+            <div class="space-y-8">
+                <!-- Publication 1 -->
+                <div class="group border-b border-gray-100 pb-8 animate-on-scroll">
+                    <p class="text-sm font-semibold text-apple-blue mb-2">Preprint (submitted) · bioRxiv 2026</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-2 group-hover:text-apple-blue transition-colors duration-300">
+                        Unifying phylogenetic traversal and deep learning to guide tree exploration
+                    </h3>
+                    <p class="text-gray-500 text-sm font-light mb-3">
+                        Lena Collienne, David H. Rich, Mary Barker, Chris Jennings-Shaffer, <span class="font-medium text-gray-800">Harry Richman</span>, and Erick Matsen.
+                    </p>
+                    <div class="flex gap-4 items-center flex-wrap">
+                        <a href="https://github.com/matsengrp/phylo-exploration" class="text-sm text-apple-blue hover:underline">Code</a>
+                    </div>
+                </div>
+
+                <!-- Publication 2 -->
+                <div class="group border-b border-gray-100 pb-8 animate-on-scroll">
+                    <p class="text-sm font-semibold text-apple-blue mb-2">Bulletin of Mathematical Biology 2026</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-2 group-hover:text-apple-blue transition-colors duration-300">
+                        Vector encoding of phylogenetic trees by ordered leaf attachment
+                    </h3>
+                    <p class="text-gray-500 text-sm font-light mb-3">
+                        <span class="font-medium text-gray-800">Harry Richman</span>, Frederick Matsen, and Cheng Zhang.
+                    </p>
+                    <div class="flex gap-4 items-center flex-wrap">
+                        <a href="https://arxiv.org/abs/2503.10169" class="text-sm text-apple-blue hover:underline">arXiv</a>
+                    </div>
+                </div>
+
+                <!-- Publication 3 -->
+                <div class="group border-b border-gray-100 pb-8 animate-on-scroll">
+                    <p class="text-sm font-semibold text-apple-blue mb-2">Accepted to JEMS</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-2 group-hover:text-apple-blue transition-colors duration-300">
+                        Tropical Weierstrass points and Weierstrass weights
+                    </h3>
+                    <p class="text-gray-500 text-sm font-light mb-3">
+                        Omid Amini, Lucas Gierczak, and <span class="font-medium text-gray-800">Harry Richman</span>.
+                    </p>
+                    <div class="flex gap-4 items-center flex-wrap">
+                        <a href="https://arxiv.org/abs/2303.07729" class="text-sm text-apple-blue hover:underline">arXiv</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 animate-on-scroll">
+                <a href="https://harryrichman.github.io/" target="_blank" class="text-apple-blue hover:text-apple-blueHover font-medium inline-flex items-center gap-1 transition-colors">
+                    檢視完整著作列表清單 (View All Publications) <i class="ph ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teaching Section -->
+    <section id="teaching" class="py-24 md:py-32 bg-apple-gray px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto animate-on-scroll">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">教學經歷 (Teaching)</h2>
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm">
+                <ul class="space-y-6 text-gray-600 text-sm md:text-base font-light">
+                    <li class="flex flex-col md:flex-row md:justify-between border-b border-gray-50 pb-4">
+                        <span class="font-medium text-apple-dark">NCTS</span>
+                        <span class="text-gray-400">Lean discussion group (Summer 2025)</span>
+                    </li>
+                    <li class="flex flex-col md:flex-row md:justify-between border-b border-gray-50 pb-4">
+                        <span class="font-medium text-apple-dark">University of Washington</span>
+                        <span class="text-gray-400">Math 208, Math 308 (Linear Algebra)</span>
+                    </li>
+                    <li class="flex flex-col md:flex-row md:justify-between pb-2">
+                        <span class="font-medium text-apple-dark">University of Michigan</span>
+                        <span class="text-gray-400">Calculus I, Calculus II, Multivariable Calculus, Differential Equations</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="bg-white border-t border-gray-200/60 pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center animate-on-scroll">
+            <h2 class="text-2xl font-bold text-apple-dark mb-6">Let's Connect</h2>
+            <p class="text-gray-500 mb-8 font-light">
+                如果您對 <strong class="text-apple-dark font-medium">Tropical Geometry</strong> 或 <strong class="text-apple-dark font-medium">Phylogenetics</strong> 感興趣，歡迎與我聯繫。
+            </p>
+
+            <div class="text-gray-500 text-sm font-light mb-8 space-y-2">
+                <p>Room 503, Cosmology Building, National Taiwan University</p>
+                <p>No. 1, Sec. 4, Roosevelt Rd. Taipei City 106, Taiwan (R.O.C.)</p>
+                <p>Email: <a href="mailto:hrichman@ncts.ntu.edu.tw" class="text-apple-blue hover:underline">hrichman@ncts.ntu.edu.tw</a></p>
+            </div>
+            
+            <div class="mt-16 pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400">
+                <p>&copy; 2026 Harry Richman. Adapted Portfolio Design.</p>
+                <div class="flex space-x-6">
+                    <a href="https://github.com/harryrichman" target="_blank" class="hover:text-gray-800 transition-colors">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 負責處理重複滾動動畫的 JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                // threshold: 0.15 代表元素有 15% 進入視窗時會觸發
+                threshold: 0.15 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 元素進入視窗，加上 is-visible 顯示動畫
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // 元素離開視窗，移除 is-visible 以便下次進入時再次觸發動畫
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
