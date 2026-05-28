@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Tzu-Hsuan Chan</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 引入 Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            gray: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            blue: '#0066cc',
+                            blueHover: '#0077ed'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局平滑滾動 */
+        html { 
+            scroll-behavior: smooth; 
+        }
+        body {
+            background-color: #ffffff; /* 列表頁面使用純白背景，提升文字對比度 */
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Apple 風格的流暢按鈕過渡效果 */
+        .btn-fluid {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, color;
+        }
+        .btn-fluid:active {
+            transform: scale(0.98);
+        }
+
+        /* 毛玻璃導覽列效果 */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        /* 滾動進入視野的動畫基礎設定 */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        /* Hero 區塊極簡流體背景動畫 (Ambient Aurora) - 稍微降低強度以配合列表頁 */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        
+        /* 移除卡片樣式，專注於文字排版 */
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 text-xs font-medium text-gray-800 tracking-wide">
+                <a href="index.html" class="hover:text-apple-blue transition-colors duration-300 font-semibold flex items-center gap-1.5 btn-fluid">
+                    <i class="ph ph-arrow-left text-sm"></i> Back
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#research" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Research</a>
+                    <a href="index.html#publications" class="hover:text-apple-blue text-dark transition-colors duration-500">Publications</a>
+                    <a href="index.html#teaching" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Teaching</a>
+                    <a href="index.html#miscellaneous" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Miscellaneous</a>
+                    <a href="index.html#resources" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Resources</a>
+                </div>
+                <a href="mailto:iljanjc@gmail.com" class="hover:text-apple-blue transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
+        <!-- Ambient Fluid Background -->
+        <div class="absolute inset-0 pointer-events-none z-0 opacity-60">
+            <!-- 左側淡藍色 -->
+            <div class="absolute -top-[10%] -left-[5%] w-[300px] h-[300px] bg-blue-200/30 rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
+            <!-- 右側淡綠色 -->
+            <div class="absolute top-[10%] -right-[5%] w-[400px] h-[400px] bg-teal-100/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto w-full relative z-10 border-b border-gray-200 pb-8">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-apple-dark mb-3 animate-on-scroll">
+                Publications
+            </h1>
+            <p class="text-base md:text-lg text-gray-500 font-light animate-on-scroll delay-100">
+                A complete list of my academic works.
+            </p>
+        </div>
+    </header>
+
+    <!-- Publications List Section -->
+    <main class="pb-24 px-4 sm:px-6 lg:px-8 bg-white min-h-screen">
+        <div class="max-w-4xl mx-auto w-full">
+
+            <!-- 年度分組：2026 -->
+            <div class="mb-16 animate-on-scroll">
+                <div class="space-y-0">
+                    <!-- Publication Item 1 (純文字條列) -->
+                    <div class="group py-6 border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-300 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
+                            <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider shrink-0 w-2">1. </span>
+                            <p target="_blank" rel="noopener noreferrer" class="text-lg md:text-xl font-medium text-apple-dark leading-snug transition-colors duration-300">
+                                Stability and Memory-induced Transient Oscillatory Dynamics in a Fractional HIV Model with Dual Transmission Routes
+                            </p>
+                        </div>
+                        <div class="md:pl-6">
+                            <p class="text-gray-600 text-sm md:text-base font-light mb-1">
+                                Chang-Yuan Cheng, Shyan-Shiou Chen, <span class="font-medium text-gray-900 border-b border-gray-300 pb-0.5">Tzu-Hsuan Chan</span>.
+                            </p>
+                            <p class="text-gray-500 text-sm mb-3">
+                                <em class="font-medium text-gray-600">Taiwanese Journal of Mathematics (2026)</em>.
+                            </p>
+                            <div class="flex gap-4 items-center">
+                                <a href="https://projecteuclid.org/journals/taiwanese-journal-of-mathematics/advance-publication/Stability-and-Memory-induced-Transient-Oscillatory-Dynamics-in-a-Fractional/10.11650/tjm/260106.full?tab=ArticleLink" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4 flex items-center gap-1 btn-fluid">
+                                    <i class="ph ph-article"></i> View Article
+                                </a>
+                                <span class="text-sm text-gray-400 font-light">doi: 10.11650/tjm/260106</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 預留未來發表的版位 Item 2 -->
+                    <!--
+                    <div class="group py-6 border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-300 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl">
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
+                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider shrink-0 w-24">Preprint</span>
+                            <a href="#" class="text-lg md:text-xl font-medium text-apple-dark leading-snug group-hover:text-apple-blue transition-colors duration-300">
+                                Title of your next awesome paper goes here and explains the mechanism
+                            </a>
+                        </div>
+                        <div class="md:pl-28">
+                            <p class="text-gray-600 text-sm md:text-base font-light mb-1">
+                                <span class="font-medium text-gray-900 border-b border-gray-300 pb-0.5">Tzu-Hsuan Chan</span>, Co-Author.
+                            </p>
+                            <p class="text-gray-500 text-sm mb-3">
+                                <em class="font-medium text-gray-600">Submitted to Journal of Mathematical Biology</em>.
+                            </p>
+                            <div class="flex gap-4 items-center">
+                                <a href="#" class="text-sm font-medium text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4 flex items-center gap-1 btn-fluid">
+                                    <i class="ph ph-file-pdf"></i> PDF
+                                </a>
+                                <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline decoration-gray-300 underline-offset-4 flex items-center gap-1 btn-fluid">
+                                    <i class="ph ph-github-logo"></i> Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <!-- 年度分組：2025 (範例) -->
+            <!--
+            <div class="mb-16 animate-on-scroll">
+                <h2 class="text-2xl font-semibold text-apple-dark mb-6 tracking-tight">2025</h2>
+                <div class="space-y-0">
+                    ...
+                </div>
+            </div>
+            -->
+            
+            <div class="text-center mt-20 pt-10 border-t border-gray-100 animate-on-scroll">
+                <p class="text-gray-400 text-sm font-light flex items-center justify-center gap-2">
+                    <i class="ph ph-dots-three text-xl"></i> End of list
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white py-10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="text-xs text-gray-400 font-light">
+                <p>&copy; 2026 Tzu-Hsuan Chan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 負責處理滾動動畫的 JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // 讓列表往回滾動時也能重新觸發動畫
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

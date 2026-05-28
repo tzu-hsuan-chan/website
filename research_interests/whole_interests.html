@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Tzu-Hsuan Chan</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 引入 Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            gray: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            blue: '#0066cc',
+                            blueHover: '#0077ed'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 全局平滑滾動 */
+        html { 
+            scroll-behavior: smooth; 
+        }
+        body {
+            background-color: #f5f5f7; /* 使用 apple-gray 作為全站背景，維持閱讀舒適度 */
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Apple 風格的流暢按鈕過渡效果 */
+        .btn-fluid {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow, background-color;
+        }
+        .btn-fluid:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+        .btn-fluid:active {
+            transform: scale(0.97);
+            transition: all 0.1s ease;
+        }
+
+        /* 毛玻璃導覽列效果 */
+        .glass-nav {
+            background-color: rgba(255, 255, 255, 0.72);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        /* 滾動進入視野的動畫基礎設定 */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Hero 區塊極簡流體背景動畫 (Ambient Aurora) */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 15s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+        
+        /* 針對此頁面，不強制高度，因為列表長度未知 */
+        /* 移除強制全螢幕滾動捕捉，回歸正常的長網頁瀏覽體驗 */
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 text-xs font-medium text-gray-800 tracking-wide">
+                <a href="../index.html" class="hover:text-apple-blue transition-colors duration-300 font-semibold flex items-center gap-2">
+                    <i class="ph ph-arrow-left text-sm"></i> Back to Home
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="../index.html#research" class="hover:text-apple-blue text-dark transition-colors duration-500">Research</a>
+                    <a href="../index.html#publications" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Publications</a>
+                    <a href="../index.html#teaching" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Teaching</a>
+                    <a href="../index.html#miscellaneous" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Miscellaneous</a>
+                    <a href="../index.html#resources" class="hover:text-apple-blue text-gray-400 font-light transition-colors duration-500">Resources</a>
+                </div>
+                <a href="../index.html#contact" class="hover:text-apple-blue transition-colors duration-300">Contact me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section (類似 Hero) -->
+    <header class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 text-center relative overflow-hidden bg-white border-b border-gray-200/50">
+        <!-- Ambient Fluid Background -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <!-- 左上角淡藍色 -->
+            <div class="absolute -top-[10%] -left-[10%] w-[300px] h-[300px] bg-blue-300/20 rounded-full mix-blend-multiply filter blur-[100px] animate-blob"></div>
+            <!-- 右側淡紫色 -->
+            <div class="absolute top-[20%] -right-[10%] w-[400px] h-[400px] bg-purple-300/20 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto w-full relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-apple-dark mb-4 animate-on-scroll">
+                Research Interests
+            </h1>
+            <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto animate-on-scroll delay-100">
+                My Research Interests and Focus Areas
+            </p>
+        </div>
+    </header>
+
+    <!-- Research Interests Content -->
+    <main class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-apple-gray min-h-screen">
+        <div class="max-w-4xl mx-auto w-full">
+
+            <!-- Mathematical Biology -->
+            <div class="mb-16 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-apple-dark">Mathematical Biology</h2>
+                    <div class="h-px bg-gray-300 flex-grow"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Ecosystems</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                This research field focuses on mathematical modeling in ecology, with particular interest in how species interactions influence the long-time behavior of ecosystems. Using differential equations and dynamical systems theory, I study questions related to coexistence, extinction, stability, and transitions between different ecological states. These models provide a mathematical framework for understanding how mechanisms such as predation, competition, and resource limitation shape population dynamics and ecosystem persistence.
+                            </p>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                Keywords: Lotka-Volterra model, trophic functions, predation and competitive interactions.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Epidemiology</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                In this area, we have two main viewpoints: <br>
+                                (i) the between-host transmission dynamics, which can tell us whether the disease will die out or become endemic. Sometimes, we can also investigate a good control strategy by analyzing the model.<br> 
+                                (ii) the within-host dynamics, which can help us understand how the virus interacts with the host's immune system, and how this interaction affects the progression of the disease and the effectiveness of treatments. 
+                            </p>
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+
+            <!-- Bifurcation Theory -->
+            <div class="mb-16 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-apple-dark">Bifurcation Theory</h2>
+                    <div class="h-px bg-gray-300 flex-grow"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Bifurcation on a parameter</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                To be continued...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nonautonomous Systems -->
+            <div class="mb-16 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-apple-dark">Nonautonomous Systems</h2>
+                    <div class="h-px bg-gray-300 flex-grow"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Nonautonomous Systems</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                To be continued...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Others -->
+            <div class="mb-16 animate-on-scroll">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="text-2xl font-bold text-apple-dark">Others</h2>
+                    <div class="h-px bg-gray-300 flex-grow"></div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Flow Free Problems</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                Given an n-by-n checkerboard and k pairs of colored dots in some blocks. The flow free problem asks whether we can find k paths on the checkerboard satisfying the following conditions:<br>
+                                (i) each path connects a pair of same colored dots; <br>
+                                (ii) each path only passes through blocks that are not occupied by other paths; <br>
+                                (iii) all blocks on the checkerboard are occupied by some path. <br>
+                                This problem is NP-complete, and it is interesting to investigate some special algorithms to find the solution. 
+                            </p>
+                        </div>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                Game links: <a href="https://play.google.com/store/apps/details?id=com.bigduckgames.flow&hl=zh_TW" target="_blank" rel="noopener noreferrer" class="text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4">Flow Free (Google Play)</a>, <a href="https://apps.apple.com/tw/app/flow-free/id526641427" target="_blank" rel="noopener noreferrer" class="text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4">Flow Free (Apple Store)</a>    
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 1 -->
+                    <div class="bg-white p-6 md:p-8 rounded-3xl shadow-sm border border-gray-100 transition-all duration-300">
+                        <p class="text-m font-semibold text-apple-blue uppercase tracking-wider mb-2">Neural Networks</p>
+                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb">
+                            <p class="text-gray-600 text-sm md:text-base mb-1">
+                                To be continued...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 負責處理滾動動畫的 JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // 在長列表頁面，建議往回滾動時也能重新觸發動畫，保持活力
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
