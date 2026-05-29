@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Space | Tzu-Hsuan Chan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        apple: { gray: '#f5f5f7', dark: '#1d1d1f', blue: '#0066cc' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f5f5f7; /* Apple 背景灰 */
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 順滑按鈕與輸入框過渡 */
+        .fluid-transition {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Mac 登入失敗的經典抖動動畫 */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+        .animate-shake {
+            animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        /* 毛玻璃效果 */
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+    </style>
+</head>
+
+<body class="h-screen w-full flex flex-col selection:bg-apple-blue selection:text-white relative overflow-hidden">
+
+    <!-- 背景裝飾光暈 -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center">
+        <div class="w-[600px] h-[600px] bg-blue-200/40 rounded-full mix-blend-multiply filter blur-[120px]"></div>
+    </div>
+
+    <!-- 左上角返回按鈕 -->
+    <nav class="absolute top-0 left-0 w-full p-6 z-20">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-apple-dark fluid-transition">
+            <i class="ph ph-arrow-left text-lg"></i> Back to Home
+        </a>
+    </nav>
+
+    <!-- 中央解謎區塊 -->
+    <main class="flex-1 flex items-center justify-center p-4 z-10">
+        <div class="glass-card rounded-3xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white max-w-md w-full text-center">
+            
+            <!-- 鎖頭 Icon -->
+            <div id="icon-container" class="w-16 h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto mb-6 fluid-transition">
+                <i id="lock-icon" class="ph-fill ph-lock-key text-3xl fluid-transition"></i>
+            </div>
+
+            <h1 class="text-2xl font-bold text-apple-dark mb-2">Restricted Area</h1>
+            
+            <!-- 你的謎題 (可以在這裡修改) -->
+            <p class="text-sm text-gray-500 font-light mb-8">
+                Please answer the question to proceed:<br>
+                <strong class="text-apple-dark font-medium mt-2 block">我最喜歡的男歌手是誰？</strong>
+            </p>
+
+            <!-- 輸入框與按鈕 -->
+            <div class="space-y-4">
+                <div id="input-wrapper" class="relative fluid-transition">
+                    <input type="text" id="answer-input" placeholder="Enter your answer" 
+                        class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-apple-blue focus:ring-4 focus:ring-apple-blue/10 fluid-transition text-center"
+                        autocomplete="off">
+                </div>
+                
+                <button id="submit-btn" onclick="checkAnswer()" class="w-full bg-apple-dark text-white rounded-xl py-3.5 text-sm font-medium hover:bg-black hover:scale-[1.02] active:scale-[0.98] fluid-transition shadow-sm">
+                    Unlock
+                </button>
+            </div>
+            
+            <p id="error-msg" class="text-xs text-red-500 mt-4 h-4 opacity-0 fluid-transition">
+                Incorrect answer. Please try again.
+            </p>
+
+        </div>
+    </main>
+
+    <script>
+        // === 解謎設定區 ===
+        // 為了避免大小寫問題，我們驗證時會全部轉成小寫並去除空白
+        const CORRECT_ANSWER_1 = "周興哲";
+        const SECRET_PAGE_URL = "private_door_3.html"; // 答對後跳轉的真實隱藏頁面
+
+        const inputField = document.getElementById('answer-input');
+        const submitBtn = document.getElementById('submit-btn');
+        const inputWrapper = document.getElementById('input-wrapper');
+        const errorMsg = document.getElementById('error-msg');
+        const iconContainer = document.getElementById('icon-container');
+        const lockIcon = document.getElementById('lock-icon');
+
+        // 監聽 Enter 鍵
+        inputField.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') checkAnswer();
+        });
+
+        // 每次重新輸入時，清除錯誤紅框
+        inputField.addEventListener('input', function() {
+            inputField.classList.remove('border-red-400', 'focus:border-red-400', 'focus:ring-red-400/20');
+            inputField.classList.add('border-gray-200', 'focus:border-apple-blue', 'focus:ring-apple-blue/10');
+            errorMsg.classList.add('opacity-0');
+        });
+
+        function checkAnswer() {
+            const userAnswer = inputField.value.trim().toLowerCase();
+
+            if (userAnswer === CORRECT_ANSWER_1 || userAnswer === CORRECT_ANSWER_2 || userAnswer === CORRECT_ANSWER_3) {
+                // 答對的特效 (轉綠色、鎖頭打開)
+                inputField.disabled = true;
+                submitBtn.disabled = true;
+                
+                iconContainer.classList.replace('bg-gray-100', 'bg-green-100');
+                iconContainer.classList.replace('text-gray-400', 'text-green-600');
+                lockIcon.classList.replace('ph-lock-key', 'ph-lock-key-open');
+                
+                submitBtn.classList.replace('bg-apple-dark', 'bg-green-600');
+                submitBtn.classList.replace('hover:bg-black', 'hover:bg-green-700');
+                submitBtn.textContent = 'Access Granted...';
+
+                // 延遲 0.8 秒後跳轉到真實的隱私頁面
+                setTimeout(() => {
+                    window.location.href = SECRET_PAGE_URL;
+                }, 800);
+
+            } else {
+                // 答錯的特效 (紅框、抖動)
+                inputField.classList.replace('border-gray-200', 'border-red-400');
+                inputField.classList.replace('focus:border-apple-blue', 'focus:border-red-400');
+                inputField.classList.replace('focus:ring-apple-blue/10', 'focus:ring-red-400/20');
+                errorMsg.classList.remove('opacity-0');
+
+                // 觸發 CSS 抖動動畫 (先移除再加入以確保每次都能觸發)
+                inputWrapper.classList.remove('animate-shake');
+                void inputWrapper.offsetWidth; // 觸發重繪 (Reflow)
+                inputWrapper.classList.add('animate-shake');
+            }
+        }
+    </script>
+</body>
+</html>
