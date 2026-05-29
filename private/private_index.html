@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Scenes | Tzu-Hsuan Chan</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 引入 Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        apple: { gray: '#f5f5f7', dark: '#1d1d1f', blue: '#0066cc' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 這個頁面拔除 scroll-snap，恢復最自然的滑動，適合瀏覽照片 */
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #f5f5f7; /* Apple 經典淺灰背景 */
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 順滑過渡效果 */
+        .fluid-transition {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* 照片懸停放大的畫框效果 */
+        .photo-frame {
+            overflow: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+            background-color: #e5e5ea;
+            position: relative;
+        }
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+        .photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        /* 滾動淡入動畫 */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+
+        /* 毛玻璃頂部導覽列 */
+        .glass-nav {
+            background-color: rgba(245, 245, 247, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-apple-blue selection:text-white pb-24">
+
+    <!-- 導覽列 -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-200/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 text-xs font-medium text-gray-800 tracking-wide">
+                <a href="index.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-apple-dark fluid-transition">
+                    <i class="ph ph-lock-key-open text-base"></i> Logout & Return
+                </a>
+                <span class="text-apple-dark font-semibold">Personal Vault</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 標題區塊 -->
+    <header class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-apple-dark mb-4 animate-on-scroll">
+            Behind the Scenes.
+        </h1>
+        <p class="text-base md:text-lg text-gray-500 font-light animate-on-scroll delay-100">
+            學術之外的生活片段、攝影紀錄與一些不成熟的想法。
+        </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+        <!-- 相簿區塊 (Photo Gallery) -->
+        <section class="animate-on-scroll delay-200">
+            <div class="flex items-center gap-2 mb-6 px-2">
+                <i class="ph-fill ph-camera text-xl text-gray-400"></i>
+                <h2 class="text-lg font-semibold text-apple-dark">Moments</h2>
+            </div>
+            
+            <!-- 使用 CSS Grid 做出類似 iOS 相簿的動態排版 -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- 直式大圖 (跨兩行) -->
+                <div class="photo-frame row-span-2 aspect-[2/3] md:aspect-auto shadow-sm border border-gray-100/50">
+                    <img src="https://placehold.co/600x900/e2e8f0/64748b?text=Portrait" alt="Gallery Photo 1">
+                </div>
+                <!-- 橫式或正方圖 -->
+                <div class="photo-frame aspect-square shadow-sm border border-gray-100/50">
+                    <img src="https://placehold.co/600x600/f1f5f9/94a3b8?text=Landscape" alt="Gallery Photo 2">
+                </div>
+                <!-- 橫式或正方圖 -->
+                <div class="photo-frame aspect-square shadow-sm border border-gray-100/50">
+                    <img src="https://placehold.co/600x600/e2e8f0/64748b?text=Coffee" alt="Gallery Photo 3">
+                </div>
+                <!-- 橫式長圖 (跨兩欄) -->
+                <div class="photo-frame col-span-2 md:col-span-2 aspect-[2/1] shadow-sm border border-gray-100/50">
+                    <img src="https://placehold.co/1200x600/f8fafc/94a3b8?text=Travel+Panorama" alt="Gallery Photo 4">
+                </div>
+            </div>
+        </section>
+
+        <!-- 私人筆記/日記區塊 (Notes) -->
+        <section class="animate-on-scroll">
+            <div class="flex items-center gap-2 mb-6 px-2">
+                <i class="ph-fill ph-notebook text-xl text-gray-400"></i>
+                <h2 class="text-lg font-semibold text-apple-dark">Thoughts & Notes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 筆記卡片 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Oct 24, 2026</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">關於研究的撞牆期</h3>
+                    <p class="text-gray-500 text-sm font-light leading-relaxed">
+                        最近在推導 Nonautonomous 系統的邊界條件時卡住了很久。有時候放下紙筆，去外面跑個步，或者泡一杯咖啡，靈感反而會在最不經意的時候浮現。這大概也是做學術必經的修行吧。
+                    </p>
+                </div>
+
+                <!-- 筆記卡片 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sep 12, 2026</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">週末的攝影散步</h3>
+                    <p class="text-gray-500 text-sm font-light leading-relaxed">
+                        帶上相機去新竹的山區走走。遠離螢幕和 LaTeX，看著光影在樹葉間變化，對於重新調整心理狀態非常有幫助。大自然的碎形（Fractal）結構總是令人著迷。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 私人筆記/日記區塊 (Notes) -->
+        <section class="animate-on-scroll">
+            <div class="flex items-center gap-2 mb-6 px-2">
+                <i class="ph-fill ph-notebook text-xl text-gray-400"></i>
+                <h2 class="text-lg font-semibold text-apple-dark">Friends</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- 朋友 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">學妹</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">鍾愛</h3>
+                    <p class="text-gray-500 text-sm font-light leading-relaxed">
+                        好人    
+                    </p>
+                </div>
+
+                <!-- 朋友 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">學弟</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">任維初</h3>
+                    <p class="text-gray-500 text-sm font-light leading-relaxed">
+                        好人    
+                    </p>
+                </div>
+
+                <!-- 朋友 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">學姊</p>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">吳宗螢</h3>
+                    <p class="text-gray-500 text-sm font-light leading-relaxed">
+                        好人    
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 負責處理滾動動畫的 JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
