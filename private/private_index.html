@@ -88,7 +88,7 @@
                 <a href="../index.html" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-apple-dark fluid-transition">
                     Return
                 </a>
-                <span class="text-apple-dark font-semibold">Personal Vault</span>
+                <span class="text-apple-dark font-semibold">Private Space</span>
             </div>
         </div>
     </nav>
@@ -105,31 +105,62 @@
 
     <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
-        <!-- 相簿區塊 (Photo Gallery) -->
-        <section class="animate-on-scroll delay-200">
-            <div class="flex items-center gap-2 mb-6 px-2">
-                <i class="ph-fill ph-camera text-xl text-gray-400"></i>
-                <h2 class="text-lg font-semibold text-apple-dark">Moments</h2>
+        <!-- 相簿區塊 (Albums) -->
+        <section id="albums" class="animate-on-scroll delay-200">
+            <div class="flex items-center justify-between mb-6 px-2">
+                <div class="flex items-center gap-2">
+                    <i class="ph-fill ph-images text-xl text-gray-400"></i>
+                    <h2 class="text-lg font-semibold text-apple-dark">My Albums</h2>
+                </div>
             </div>
             
-            <!-- 使用 CSS Grid 做出類似 iOS 相簿的動態排版 -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                <!-- 直式大圖 (跨兩行) -->
-                <div class="photo-frame row-span-2 aspect-[2/3] md:aspect-auto shadow-sm border border-gray-100/50">
-                    <img src="https://placehold.co/600x900/e2e8f0/64748b?text=Portrait" alt="Gallery Photo 1">
-                </div>
-                <!-- 橫式或正方圖 -->
-                <div class="photo-frame aspect-square shadow-sm border border-gray-100/50">
-                    <img src="https://placehold.co/600x600/f1f5f9/94a3b8?text=Landscape" alt="Gallery Photo 2">
-                </div>
-                <!-- 橫式或正方圖 -->
-                <div class="photo-frame aspect-square shadow-sm border border-gray-100/50">
-                    <img src="https://placehold.co/600x600/e2e8f0/64748b?text=Coffee" alt="Gallery Photo 3">
-                </div>
-                <!-- 橫式長圖 (跨兩欄) -->
-                <div class="photo-frame col-span-2 md:col-span-2 aspect-[2/1] shadow-sm border border-gray-100/50">
-                    <img src="https://placehold.co/1200x600/f8fafc/94a3b8?text=Travel+Panorama" alt="Gallery Photo 4">
-                </div>
+            <!-- 改用正方形網格，下方留出放文字的空間 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 md:gap-y-10">
+                
+                <!-- 獨立相簿 1 -->
+                <a href="albums/cat.html" class="group block cursor-pointer">
+                    <div class="photo-frame aspect-square shadow-sm border border-gray-200/60 mb-3">
+                        <img src="../img/private_index_image/cat.jpg" alt="Album Cover 1">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-sm font-semibold text-apple-dark group-hover:text-apple-blue fluid-transition truncate">貓貓</h3>
+                    </div>
+                </a>
+
+                <!-- 獨立相簿 2 -->
+                <a href="albums/food.html" class="group block cursor-pointer">
+                    <div class="photo-frame aspect-square shadow-sm border border-gray-200/60 mb-3">
+                        <img src="../img/private_index_image/food.jpg" alt="Album Cover 2">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-sm font-semibold text-apple-dark group-hover:text-apple-blue fluid-transition truncate">食物</h3>
+                    </div>
+                </a>
+
+                <!-- 獨立相簿 3 -->
+                <a href="albums/landscape.html" class="group block cursor-pointer">
+                    <div class="photo-frame aspect-square shadow-sm border border-gray-200/60 mb-3">
+                        <img src="../img/private_index_image/landscape.jpg" alt="Album Cover 3">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-sm font-semibold text-apple-dark group-hover:text-apple-blue fluid-transition truncate">風景</h3>
+                    </div>
+                </a>
+
+                <!-- 獨立相簿 4 -->
+                <a href="albums/life.html" class="group block cursor-pointer">
+                    <div class="photo-frame aspect-square shadow-sm border border-gray-200/60 mb-3 relative">
+                        <!-- 可以加上小圖示表示有影片或最愛 -->
+                        <div class="absolute bottom-2 left-2 text-white drop-shadow-md">
+                            <i class="ph-fill ph-heart text-sm"></i>
+                        </div>
+                        <img src="../img/private_index_image/life.jpg" alt="Album Cover 4">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-sm font-semibold text-apple-dark group-hover:text-apple-blue fluid-transition truncate">日常</h3>
+                    </div>
+                </a>
+
             </div>
         </section>
 
@@ -137,27 +168,18 @@
         <section class="animate-on-scroll">
             <div class="flex items-center gap-2 mb-6 px-2">
                 <i class="ph-fill ph-notebook text-xl text-gray-400"></i>
-                <h2 class="text-lg font-semibold text-apple-dark">Thoughts & Notes</h2>
+                <h2 class="text-lg font-semibold text-apple-dark">Dairy</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- 筆記卡片 1 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
+                <!-- <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
                     <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Oct 24, 2026</p>
                     <h3 class="text-xl font-medium text-apple-dark mb-3">關於研究的撞牆期</h3>
                     <p class="text-gray-500 text-sm font-light leading-relaxed">
                         To be continued...
                     </p>
-                </div>
-
-                <!-- 筆記卡片 2 -->
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
-                    <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Sep 12, 2026</p>
-                    <h3 class="text-xl font-medium text-apple-dark mb-3">週末的攝影散步</h3>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">
-                        To be continued...
-                    </p>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -172,7 +194,7 @@
                 <!-- 朋友 1 -->
                 <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 fluid-transition hover:shadow-md">
                     <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">學妹</p>
-                    <h3 class="text-xl font-medium text-apple-dark mb-3">鍾愛</h3>
+                    <h3 class="text-xl font-medium text-apple-dark mb-3">鍾璦</h3>
                     <p class="text-gray-500 text-sm font-light leading-relaxed">
                         好人    
                     </p>
