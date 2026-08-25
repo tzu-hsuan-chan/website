@@ -4,20 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publications | Tzu-Hsuan Chan</title>
-    <!-- 引入 Tailwind CSS -->
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Google Fonts: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- 引入 Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
                         apple: {
                             gray: '#f5f5f7',
@@ -32,38 +28,32 @@
     </script>
 
     <style>
-        /* 全局平滑滾動 */
-        html { 
-            scroll-behavior: smooth; 
-        }
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #ffffff; /* 列表頁面使用純白背景，提升文字對比度 */
+            background-color: #ffffff;
             color: #1d1d1f;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Apple 風格的流暢按鈕過渡效果 */
         .btn-fluid {
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, color;
         }
-        .btn-fluid:active {
-            transform: scale(0.98);
-        }
+        .btn-fluid:active { transform: scale(0.98); }
 
-        /* 毛玻璃導覽列效果 */
         .glass-nav {
             background-color: rgba(255, 255, 255, 0.72);
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
         }
 
-        /* 滾動進入視野的動畫基礎設定 */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .animate-on-scroll.is-visible {
@@ -71,13 +61,11 @@
             transform: translateY(0);
         }
         .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
 
-        /* Hero 區塊極簡流體背景動畫 (Ambient Aurora) - 稍微降低強度以配合列表頁 */
         @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.05); }
-            66% { transform: translate(-20px, 20px) scale(0.95); }
+            0%   { transform: translate(0px, 0px) scale(1); }
+            33%  { transform: translate(30px, -50px) scale(1.05); }
+            66%  { transform: translate(-20px, 20px) scale(0.95); }
             100% { transform: translate(0px, 0px) scale(1); }
         }
         .animate-blob {
@@ -85,8 +73,6 @@
             will-change: transform;
         }
         .animation-delay-2000 { animation-delay: 2s; }
-        
-        /* 移除卡片樣式，專注於文字排版 */
     </style>
 </head>
 
@@ -111,13 +97,10 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-        <!-- Ambient Fluid Background -->
         <div class="absolute inset-0 pointer-events-none z-0 opacity-60">
-            <!-- 左側淡藍色 -->
             <div class="absolute -top-[10%] -left-[5%] w-[300px] h-[300px] bg-blue-200/30 rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
-            <!-- 右側淡綠色 -->
             <div class="absolute top-[10%] -right-[5%] w-[400px] h-[400px] bg-teal-100/40 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
         </div>
 
@@ -131,87 +114,33 @@
         </div>
     </header>
 
-    <!-- Publications List Section -->
+    <!-- Publications -->
     <main class="pb-24 px-4 sm:px-6 lg:px-8 bg-white min-h-screen">
         <div class="max-w-4xl mx-auto w-full">
-
-            <!-- 年度分組：2026 -->
-            <div class="mb-16 animate-on-scroll">
-                <div class="space-y-0">
-                    <!-- Publication Item 1 (純文字條列) -->
-                    <div class="group py-6 border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-300 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl">
-                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
-                            <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider shrink-0 w-2">1. </span>
-                            <p target="_blank" rel="noopener noreferrer" class="text-lg md:text-xl font-medium text-apple-dark leading-snug transition-colors duration-300">
-                                Stability and Memory-induced Transient Oscillatory Dynamics in a Fractional HIV Model with Dual Transmission Routes
-                            </p>
-                        </div>
-                        <div class="md:pl-6">
-                            <p class="text-gray-600 text-sm md:text-base font-light mb-1">
-                                Chang-Yuan Cheng, Shyan-Shiou Chen, <span class="font-medium text-gray-900 border-b border-gray-300 pb-0.5">Tzu-Hsuan Chan</span>.
-                            </p>
-                            <p class="text-gray-500 text-sm mb-3">
-                                <em class="font-medium text-gray-600">Taiwanese Journal of Mathematics (2026)</em>.
-                            </p>
-                            <div class="flex gap-4 items-center">
-                                <a href="https://projecteuclid.org/journals/taiwanese-journal-of-mathematics/advance-publication/Stability-and-Memory-induced-Transient-Oscillatory-Dynamics-in-a-Fractional/10.11650/tjm/260106.full?tab=ArticleLink" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4 flex items-center gap-1 btn-fluid">
-                                    <i class="ph ph-article"></i> View Article
-                                </a>
-                                <span class="text-sm text-gray-400 font-light">doi: 10.11650/tjm/260106</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 預留未來發表的版位 Item 2 -->
-                    <!--
-                    <div class="group py-6 border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-300 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl">
-                        <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
-                            <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider shrink-0 w-24">Preprint</span>
-                            <a href="#" class="text-lg md:text-xl font-medium text-apple-dark leading-snug group-hover:text-apple-blue transition-colors duration-300">
-                                Title of your next awesome paper goes here and explains the mechanism
-                            </a>
-                        </div>
-                        <div class="md:pl-28">
-                            <p class="text-gray-600 text-sm md:text-base font-light mb-1">
-                                <span class="font-medium text-gray-900 border-b border-gray-300 pb-0.5">Tzu-Hsuan Chan</span>, Co-Author.
-                            </p>
-                            <p class="text-gray-500 text-sm mb-3">
-                                <em class="font-medium text-gray-600">Submitted to Journal of Mathematical Biology</em>.
-                            </p>
-                            <div class="flex gap-4 items-center">
-                                <a href="#" class="text-sm font-medium text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4 flex items-center gap-1 btn-fluid">
-                                    <i class="ph ph-file-pdf"></i> PDF
-                                </a>
-                                <a href="#" class="text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline decoration-gray-300 underline-offset-4 flex items-center gap-1 btn-fluid">
-                                    <i class="ph ph-github-logo"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                </div>
+            <div id="local-file-panel" class="hidden mb-10 rounded-2xl border border-gray-200 bg-gray-50/70 px-5 py-5">
+                <p class="text-sm text-gray-700 font-medium mb-1">Open publications.txt</p>
+                <p class="text-sm text-gray-500 font-light mb-4">
+                    Because this page is opened directly from your computer, your browser requires you to choose the text file once.
+                </p>
+                <label class="inline-flex items-center gap-2 text-sm font-medium text-apple-blue cursor-pointer hover:underline underline-offset-4 btn-fluid">
+                    <i class="ph ph-file-text"></i>
+                    Select publications.txt
+                    <input id="publication-file-input" type="file" accept=".txt,text/plain" class="hidden">
+                </label>
             </div>
 
-            <!-- 年度分組：2025 (範例) -->
-            <!--
-            <div class="mb-16 animate-on-scroll">
-                <h2 class="text-2xl font-semibold text-apple-dark mb-6 tracking-tight">2025</h2>
-                <div class="space-y-0">
-                    ...
-                </div>
+            <div id="publication-list" aria-live="polite">
+                <div class="py-8 text-sm text-gray-400 font-light">Loading publications…</div>
             </div>
-            -->
-            
+
             <div class="text-center mt-20 pt-10 border-t border-gray-100 animate-on-scroll">
                 <p class="text-gray-400 text-sm font-light flex items-center justify-center gap-2">
                     <i class="ph ph-dots-three text-xl"></i> End of list
                 </p>
             </div>
-
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white py-10 px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center">
             <div class="text-xs text-gray-400 font-light">
@@ -220,28 +149,317 @@
         </div>
     </footer>
 
-    <!-- 負責處理滾動動畫的 JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 
-            };
+        const PUBLICATIONS_FILE = 'publications.txt';
+        const OWNER_NAMES = [
+            'Tzu-Hsuan Chan',
+            'Tzu Hsuan Chan',
+            'T-H Chan',
+            'TH Chan'
+        ];
+
+        function escapeHtml(value = '') {
+            return String(value)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function escapeRegExp(value) {
+            return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function highlightOwner(authors = '') {
+            let safe = escapeHtml(authors);
+            OWNER_NAMES.forEach(name => {
+                const pattern = new RegExp(`\\b${escapeRegExp(name)}\\b`, 'gi');
+                safe = safe.replace(
+                    pattern,
+                    match => `<span class="font-medium text-gray-900 border-b border-gray-300 pb-0.5">${match}</span>`
+                );
+            });
+            return safe;
+        }
+
+        function normalizedYear(value) {
+            const year = Number.parseInt(value, 10);
+            return Number.isFinite(year) ? year : null;
+        }
+
+        function sortPublications(publications) {
+            return [...publications].sort((a, b) => {
+                const yearA = normalizedYear(a.year) ?? -Infinity;
+                const yearB = normalizedYear(b.year) ?? -Infinity;
+
+                if (yearA !== yearB) return yearB - yearA;
+                return String(a.title ?? '').localeCompare(String(b.title ?? ''), 'en', {
+                    sensitivity: 'base'
+                });
+            });
+        }
+
+        /*
+         * publications.txt format:
+         *
+         * TITLE: Paper title
+         * AUTHORS: Author A, Tzu-Hsuan Chan, Author B
+         * PUBLICATION: Journal Name
+         * YEAR: 2026
+         * URL: https://example.com/article
+         * DOI: 10.xxxx/xxxxx
+         *
+         * Leave one blank line between publications.
+         * URL and DOI are optional.
+         */
+        function parsePublications(text) {
+            const normalized = text.replace(/\r\n?/g, '\n').trim();
+            if (!normalized) return [];
+
+            const blocks = normalized.split(/\n\s*\n+/);
+            const publications = [];
+
+            for (const block of blocks) {
+                const publication = {};
+
+                for (const rawLine of block.split('\n')) {
+                    const line = rawLine.trim();
+                    if (!line || line.startsWith('#')) continue;
+
+                    const separatorIndex = line.indexOf(':');
+                    if (separatorIndex === -1) continue;
+
+                    const key = line.slice(0, separatorIndex).trim().toUpperCase();
+                    const value = line.slice(separatorIndex + 1).trim();
+
+                    switch (key) {
+                        case 'TITLE':
+                            publication.title = value;
+                            break;
+                        case 'AUTHORS':
+                            publication.authors = value;
+                            break;
+                        case 'PUBLICATION':
+                        case 'JOURNAL':
+                        case 'VENUE':
+                            publication.publication = value;
+                            break;
+                        case 'YEAR':
+                            publication.year = value;
+                            break;
+                        case 'URL':
+                        case 'LINK':
+                            publication.url = value;
+                            break;
+                        case 'DOI':
+                            publication.doi = value;
+                            break;
+                    }
+                }
+
+                if (publication.title) {
+                    publications.push(publication);
+                }
+            }
+
+            return publications;
+        }
+
+        function publicationLine(publication) {
+            const venue = String(publication.publication ?? '').trim();
+            const year = normalizedYear(publication.year);
+
+            if (venue && year) return `${escapeHtml(venue)} (${year})`;
+            if (venue) return escapeHtml(venue);
+            if (year) return `(${year})`;
+            return 'Publication information unavailable';
+        }
+
+        function renderPublication(publication, index) {
+            const link = String(publication.url || '').trim();
+            const doi = String(publication.doi || '').trim();
+
+            const title = link
+                ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer"
+                      class="text-lg md:text-xl font-medium text-apple-dark leading-snug group-hover:text-apple-blue transition-colors duration-300">
+                       ${escapeHtml(publication.title || 'Untitled')}
+                   </a>`
+                : `<p class="text-lg md:text-xl font-medium text-apple-dark leading-snug transition-colors duration-300">
+                       ${escapeHtml(publication.title || 'Untitled')}
+                   </p>`;
+
+            const articleLink = link
+                ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer"
+                       class="text-sm font-medium text-apple-blue hover:underline decoration-apple-blue/30 underline-offset-4 flex items-center gap-1 btn-fluid">
+                       <i class="ph ph-article"></i> View Article
+                   </a>`
+                : '';
+
+            return `
+                <div class="group py-6 border-b border-gray-100 hover:bg-gray-50/50 transition-colors duration-300 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded-2xl">
+                    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
+                        <span class="text-xs font-semibold text-apple-blue uppercase tracking-wider shrink-0 w-2">${index}.</span>
+                        ${title}
+                    </div>
+
+                    <div class="md:pl-6">
+                        <p class="text-gray-600 text-sm md:text-base font-light mb-1">
+                            ${highlightOwner(publication.authors || '')}${publication.authors ? '.' : ''}
+                        </p>
+
+                        <p class="text-gray-500 text-sm mb-3">
+                            <em class="font-medium text-gray-600">${publicationLine(publication)}</em>.
+                        </p>
+
+                        ${(articleLink || doi) ? `
+                        <div class="flex flex-wrap gap-x-4 gap-y-2 items-center">
+                            ${articleLink}
+                            ${doi ? `<span class="text-sm text-gray-400 font-light">doi: ${escapeHtml(doi)}</span>` : ''}
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPublications(publications) {
+            const container = document.getElementById('publication-list');
+            const sorted = sortPublications(publications);
+
+            if (!sorted.length) {
+                container.innerHTML = `
+                    <div class="py-8 text-sm text-gray-500 font-light">
+                        No publications were found in ${escapeHtml(PUBLICATIONS_FILE)}.
+                    </div>
+                `;
+                return;
+            }
+
+            const groups = new Map();
+            sorted.forEach(publication => {
+                const year = normalizedYear(publication.year);
+                const key = year ? String(year) : 'Other';
+                if (!groups.has(key)) groups.set(key, []);
+                groups.get(key).push(publication);
+            });
+
+            let globalIndex = 1;
+            const sections = [];
+
+            for (const [year, items] of groups) {
+                const renderedItems = items.map(item => renderPublication(item, globalIndex++)).join('');
+                sections.push(`
+                    <section class="mb-16 animate-on-scroll">
+                        <h2 class="text-2xl font-semibold text-apple-dark mb-6 tracking-tight">${escapeHtml(year)}</h2>
+                        <div class="space-y-0">${renderedItems}</div>
+                    </section>
+                `);
+            }
+
+            container.innerHTML = sections.join('');
+            observeAnimatedElements();
+        }
+
+        function observeAnimatedElements() {
+            if (!('IntersectionObserver' in window)) {
+                document.querySelectorAll('.animate-on-scroll').forEach(el => el.classList.add('is-visible'));
+                return;
+            }
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     } else {
-                        // 讓列表往回滾動時也能重新觸發動畫
                         entry.target.classList.remove('is-visible');
                     }
                 });
-            }, observerOptions);
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            });
 
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            animatedElements.forEach(el => observer.observe(el));
+            document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        }
+
+        function showLocalFilePicker() {
+            const panel = document.getElementById('local-file-panel');
+            const input = document.getElementById('publication-file-input');
+            const container = document.getElementById('publication-list');
+
+            panel.classList.remove('hidden');
+            container.innerHTML = `
+                <div class="py-4 text-sm text-gray-400 font-light">
+                    Select <code>${escapeHtml(PUBLICATIONS_FILE)}</code> above to display your publications.
+                </div>
+            `;
+
+            input.addEventListener('change', async (event) => {
+                const file = event.target.files?.[0];
+                if (!file) return;
+
+                if (file.name.toLowerCase() !== PUBLICATIONS_FILE.toLowerCase()) {
+                    container.innerHTML = `
+                        <div class="py-4 text-sm text-red-500 font-light">
+                            Please select a file named <code>${escapeHtml(PUBLICATIONS_FILE)}</code>.
+                        </div>
+                    `;
+                    input.value = '';
+                    return;
+                }
+
+                try {
+                    const text = await file.text();
+                    renderPublications(parsePublications(text));
+                    panel.classList.add('hidden');
+                } catch (error) {
+                    console.error('Unable to read local publications file:', error);
+                    container.innerHTML = `
+                        <div class="py-4 text-sm text-red-500 font-light">
+                            Unable to read <code>${escapeHtml(PUBLICATIONS_FILE)}</code>.
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        async function loadPublications() {
+            const container = document.getElementById('publication-list');
+
+            // Browsers intentionally block fetch() of sibling files when an HTML
+            // document is opened through file://. In that case we use FileReader
+            // permission through a normal file picker instead.
+            if (window.location.protocol === 'file:') {
+                showLocalFilePicker();
+                return;
+            }
+
+            try {
+                const response = await fetch(`${PUBLICATIONS_FILE}?v=${Date.now()}`, {
+                    cache: 'no-store'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const text = await response.text();
+                renderPublications(parsePublications(text));
+            } catch (error) {
+                console.error('Unable to load publications:', error);
+                container.innerHTML = `
+                    <div class="py-8 text-sm text-gray-500 font-light">
+                        Unable to load <code>${escapeHtml(PUBLICATIONS_FILE)}</code>.
+                        Make sure it is in the same folder as this HTML file.
+                    </div>
+                `;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            observeAnimatedElements();
+            loadPublications();
         });
     </script>
 </body>

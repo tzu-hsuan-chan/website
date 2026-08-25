@@ -1,0 +1,10 @@
+# One publication per block. Leave one blank line between publications.
+# Required fields: TITLE, AUTHORS, PUBLICATION, YEAR
+# Optional fields: URL, DOI
+
+TITLE: Stability and Memory-induced Transient Oscillatory Dynamics in a Fractional HIV Model with Dual Transmission Routes
+AUTHORS: Chang-Yuan Cheng, Shyan-Shiou Chen, Tzu-Hsuan Chan
+PUBLICATION: Taiwanese Journal of Mathematics
+YEAR: 2026
+URL: https://projecteuclid.org/journals/taiwanese-journal-of-mathematics/advance-publication/Stability-and-Memory-induced-Transient-Oscillatory-Dynamics-in-a-Fractional/10.11650/tjm/260106.full?tab=ArticleLink
+DOI: 10.11650/tjm/260106
