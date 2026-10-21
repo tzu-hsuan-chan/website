@@ -2,6 +2,20 @@
 # Required fields: TITLE, AUTHORS, PUBLICATION, YEAR
 # Optional fields: URL, DOI
 
+TITLE: Extinction and the Global Structure of Positive Equilibrium in a Ratio-Dependent Intraguild Predation Model
+AUTHORS: Tzu-Hsuan Chan, Chang-Hong Wu
+PUBLICATION: under review
+YEAR: 
+URL: 
+DOI: 
+
+TITLE: Asymptotic Type Proportions in Topological and Random Spread Models: The Role of Observation Intervals
+AUTHORS: ung-Chao Ban, Tzu-Hsuan Chan, Jyy-I Hong, Chen-Han Hsu, Cheng-Yu Tsai, and Nien-Cheng Tsai
+PUBLICATION: under review
+YEAR: 
+URL: 
+DOI: 
+
 TITLE: Stability and Memory-induced Transient Oscillatory Dynamics in a Fractional HIV Model with Dual Transmission Routes
 AUTHORS: Chang-Yuan Cheng, Shyan-Shiou Chen, Tzu-Hsuan Chan
 PUBLICATION: Taiwanese Journal of Mathematics
