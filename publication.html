@@ -336,7 +336,7 @@
             const groups = new Map();
             sorted.forEach(publication => {
                 const year = normalizedYear(publication.year);
-                const key = year ? String(year) : 'Other';
+                const key = year ? String(year) : 'Under review';
                 if (!groups.has(key)) groups.set(key, []);
                 groups.get(key).push(publication);
             });
