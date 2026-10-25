@@ -6,8 +6,8 @@ TITLE: Extinction and the Global Structure of Positive Equilibrium in a Ratio-De
 AUTHORS: Tzu-Hsuan Chan, Chang-Hong Wu
 PUBLICATION: under review
 YEAR: 
-URL: 
-DOI: 
+URL: https://arxiv.org/abs/2610.23995
+DOI: https://arxiv.org/abs/2610.23995
 
 TITLE: Asymptotic Type Proportions in Topological and Random Spread Models: The Role of Observation Intervals
 AUTHORS: ung-Chao Ban, Tzu-Hsuan Chan, Jyy-I Hong, Chen-Han Hsu, Cheng-Yu Tsai, and Nien-Cheng Tsai
