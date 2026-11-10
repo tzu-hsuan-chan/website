@@ -10,7 +10,7 @@ URL: https://arxiv.org/abs/2610.23995
 DOI: https://arxiv.org/abs/2610.23995
 
 TITLE: Asymptotic Type Proportions in Topological and Random Spread Models: The Role of Observation Intervals
-AUTHORS: ung-Chao Ban, Tzu-Hsuan Chan, Jyy-I Hong, Chen-Han Hsu, Cheng-Yu Tsai, and Nien-Cheng Tsai
+AUTHORS: Jung-Chao Ban, Tzu-Hsuan Chan, Jyy-I Hong, Chen-Han Hsu, Cheng-Yu Tsai, and Nien-Cheng Tsai
 PUBLICATION: under review
 YEAR: 
 URL: 
